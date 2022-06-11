@@ -4,6 +4,8 @@ import {primaryColor,secondaryColor} from '@shared/data'
 
 import {AnimatePresence} from 'framer-motion'
 
+import '@shared/all.css'
+
 let theme = createTheme({
   palette:{
     primary:{

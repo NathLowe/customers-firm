@@ -2,6 +2,10 @@ import React from 'react'
 
 import Head from 'next/head'
 
+import Header from '@layouts/Header'
+
+import {Container} from "@mui/material"
+
 const Layout = ({title,description,children,...other}) => {
   return (
     <>
@@ -10,8 +14,10 @@ const Layout = ({title,description,children,...other}) => {
             <meta name="description" content={description} />
         </Head>
 
+        <Header/>
         <main>
-            {children}
+          <h1 style={{display:'none'}} >{title}</h1>
+          {children}
         </main>
     </>
   )
