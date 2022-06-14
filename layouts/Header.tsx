@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, Typography } from '@mui/material'
+import { Box, Breadcrumbs, Drawer, IconButton, Typography } from '@mui/material'
 import React from 'react'
 
 import NavLink from '@components/NavLink'
@@ -8,11 +8,15 @@ import { slugUrls } from '@shared/data'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 
+import {
+    BiMenu as MenuIcon
+} from 'react-icons/bi'
+
 let Logo = ()=>{
 
     return <Box sx={{
         width:{
-            xs:"100%",
+            xs:"60%",
             md:"30%"
         },
         display:'flex',justifyContent:'center',alignItems:'center',cursor:'pointer'
@@ -23,12 +27,34 @@ let Logo = ()=>{
     </Box>
 }
 
+let MyMenu = ()=>{
+
+    let [openMenu,setOpenMenu] = React.useState(false)
+
+    return <Box  sx={{
+        display:'flex',justifyContent:'right',
+        alignItems:'center',flex:1, pr:3
+    }}>
+        <Box sx={{display:{xs:'none',md:'block'}}}>
+            <Links/>
+        </Box>
+        <Box sx={{display:{xs:'block',md:'none'}}}>
+            <IconButton onClick={()=>setOpenMenu(!openMenu)} >
+                <MenuIcon fontSize="40px" color="white" />
+            </IconButton>
+            <Drawer onClose={()=>setOpenMenu(false)} open={openMenu} anchor="right" >
+                <Links/>
+            </Drawer>
+        </Box>
+    </Box>
+}
+
 let Links = ()=>{
 
     return <>
         <Box sx={{
-            display:'flex',justifyContent:'right',
-            alignItems:'center',flex:1, pr:3
+            display:'flex',justifyContent:{xs:'start',md:'right'},
+            alignItems:'center',width:1,flexDirection:{xs:'column',md:'row'}
         }}>
             <NavLink href="/produits/glycerine">Glycérine</NavLink>
             <NavLink href="/produits/alcool">Alcool</NavLink>
@@ -51,8 +77,8 @@ let MyBreadcrumb = ()=>{
     let BreadcrumbLink = ({href,name})=>{
 
         return <Link href={href} >
-            <Typography color="inherit" sx={{
-                cursor:'pointer',transition:'0.5s',
+            <Typography sx={{
+                cursor:'pointer',transition:'0.5s',color:"inherit",
                 '&:hover':{
                     color:'primary.main',opacity:0.3
                 }
@@ -92,7 +118,7 @@ let MyBreadcrumb = ()=>{
     return <>
         {
             bread.length > 1 ?
-            <Breadcrumbs separator=">" sx={{mx:3, my:1, px:2, py:1}}>
+            <Breadcrumbs separator=">" sx={{mx:3, my:1, px:2, py:1,Zindex:100}}>
                 {bread}
             </Breadcrumbs>
             :
@@ -106,11 +132,11 @@ const Header = () => {
   return (
       <>
         <Box sx={{
-            display:'flex',height:150,
-            backgroundColor:'primary.main',color:'white'
+            display:'flex',height:{xs:80,sm:150},
+            backgroundColor:'secondary.dark',color:'white'
         }}>
             <Logo/>
-            <Links/>
+            <MyMenu/>
         </Box>
         <MyBreadcrumb/>
     </>

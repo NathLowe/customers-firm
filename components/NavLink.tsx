@@ -18,9 +18,9 @@ const NavLink = ({href,children}) => {
           m:'5px 10px',fontFamily:'basic',fontWeight:'bold',cursor:'pointer',
           fontSize:'27px', transition:'0.3s',
           '&:hover':{
-            color:'secondary.main'
+            color:'primary.main'
           },
-          ...( active && {fontFamily:'frassel',color:'secondary.main'})
+          ...( active && {fontFamily:'frassel',color:'primary.main'})
         }}>
             {children}
         </Typography>

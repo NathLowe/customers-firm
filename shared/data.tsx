@@ -1,6 +1,6 @@
 // MaterialUI theme datas
 var primaryColor = "#ffbf00"
-var secondaryColor = "#b37700"
+var secondaryColor = "#b7e38a"
 
 // Slug with url
 var slugUrls = [

@@ -9,7 +9,8 @@ import '@shared/all.css'
 let theme = createTheme({
   palette:{
     primary:{
-      main:primaryColor
+      main:primaryColor,
+      contrastText:'#fff'
     },
     secondary:{
       main:secondaryColor
@@ -21,9 +22,9 @@ function MyApp({ Component, pageProps }) {
   return <>
   <CssBaseline/>
   <ThemeProvider theme={theme}>
-    <AnimatePresence exitBeforeEnter>
+    {/* <AnimatePresence exitBeforeEnter> */}
       <Component {...pageProps} />
-    </AnimatePresence>
+    {/* </AnimatePresence> */}
   </ThemeProvider>
   </>
 }
