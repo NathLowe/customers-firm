@@ -9,7 +9,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 
 import {
-    BiMenu as MenuIcon
+    BiMenu as MenuIcon,
+    BiCaretLeft as LeftIcon
 } from 'react-icons/bi'
 
 let Logo = ()=>{
@@ -29,6 +30,25 @@ let Logo = ()=>{
 
 let MyMenu = ()=>{
 
+    let CloseMenu = ()=>{
+
+        return <Box sx={{
+            position:'absolute',bottom:'15px',left:0,width:1,
+            display:'flex',alignItems:'center',cursor:'pointer',
+            color:'primary.dark',transition:'0.2s',
+            '&:hover':{
+                color:'primary.main'
+            }
+        }} onClick={()=>setOpenMenu(false)} >
+            <Box sx={{mr:2,display:'flex'}}>
+                <LeftIcon color="inherit" fontSize="35px" />
+            </Box>
+            <Box>
+                <Typography component="span" sx={{color:'inherit',fontSize:'h6.fontSize'}} >Close Menu</Typography>
+            </Box>
+        </Box>
+    }
+
     let [openMenu,setOpenMenu] = React.useState(false)
 
     return <Box  sx={{
@@ -42,8 +62,12 @@ let MyMenu = ()=>{
             <IconButton onClick={()=>setOpenMenu(!openMenu)} >
                 <MenuIcon fontSize="40px" color="white" />
             </IconButton>
-            <Drawer onClose={()=>setOpenMenu(false)} open={openMenu} anchor="right" >
-                <Links/>
+
+            <Drawer onClose={()=>setOpenMenu(false)} open={openMenu} anchor="right" PaperProps={{sx:{backgroundColor:'secondary.light'}}} >
+                <div onClick={()=>setOpenMenu(false)}>
+                    <PhoneLinks/>
+                </div>
+                <CloseMenu/>
             </Drawer>
         </Box>
     </Box>
@@ -53,8 +77,8 @@ let Links = ()=>{
 
     return <>
         <Box sx={{
-            display:'flex',justifyContent:{xs:'start',md:'right'},
-            alignItems:'center',width:1,flexDirection:{xs:'column',md:'row'}
+            display:{xs:'none',md:'flex'},justifyContent:'right',
+            alignItems:'center',width:1,
         }}>
             <NavLink href="/produits/glycerine">Glycérine</NavLink>
             <NavLink href="/produits/alcool">Alcool</NavLink>
@@ -64,15 +88,35 @@ let Links = ()=>{
     </>
 }
 
+let PhoneLinks = ()=>{
+
+    return <>
+        <Box sx={{
+            display:{xs:'flex',md:'none'},
+            alignItems:'center',width:1,flexDirection:'column'
+        }}>
+            <Typography variant="h5" color="primary.dark" textAlign="center" sx={{mt:3,mb:1}} > Nos Produits </Typography>
+            <NavLink href="/produits/glycerine">Glycérine</NavLink>
+            <NavLink href="/produits/alcool">Alcool</NavLink>
+            <NavLink href="/produits/gel-hydroalcoolique">Gels Hydroalcooliques</NavLink>
+            <NavLink href="/produits/lotion">Lotion</NavLink>
+            <NavLink href="/produits/huile-eclaircissante">Huile Eclaircissante</NavLink>
+
+            <Typography variant="h5" color="primary.dark" textAlign="center" sx={{mt:3,mb:1}} > Notre Entreprise </Typography>
+            <NavLink href="/a-propos">A Propos</NavLink>
+            <NavLink href="/contact">Contactez Nous</NavLink>
+        </Box>
+    </>
+}
+
 let MyBreadcrumb = ()=>{
 
-    let {route} = useRouter()
+    let router = useRouter()
     let [bread,setBread] = React.useState(new Array())
-    let breadcrumb = new Array()
 
-    React.useLayoutEffect(()=>{
+    React.useEffect(()=>{
         setBread(createLinks())
-    },[])
+    },[setBread,router])
 
     let BreadcrumbLink = ({href,name})=>{
 
@@ -87,6 +131,8 @@ let MyBreadcrumb = ()=>{
     }
 
     let createLinks = React.useCallback(()=>{
+        let route = router.asPath
+        console.log(route)
         let elements = route.split('/')
         let response = new Array()
 
@@ -113,12 +159,12 @@ let MyBreadcrumb = ()=>{
             }
         }
         return response
-    },[route,setBread])
+    },[router])
 
     return <>
         {
             bread.length > 1 ?
-            <Breadcrumbs separator=">" sx={{mx:3, my:1, px:2, py:1,Zindex:100}}>
+            <Breadcrumbs separator=">" sx={{mx:3, my:1, px:2, py:1,zIndex:100}}>
                 {bread}
             </Breadcrumbs>
             :

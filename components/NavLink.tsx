@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 const NavLink = ({href,children}) => {
 
   let router = useRouter()
-  let route = router.route
+  let route = router.asPath
   let active = route === href
 
   return (
@@ -18,9 +18,9 @@ const NavLink = ({href,children}) => {
           m:'5px 10px',fontFamily:'basic',fontWeight:'bold',cursor:'pointer',
           fontSize:'27px', transition:'0.3s',
           '&:hover':{
-            color:'primary.main'
+            color:'primary.light'
           },
-          ...( active && {fontFamily:'frassel',color:'primary.main'})
+          ...( active && {fontFamily:'frassel',color:'primary.light'})
         }}>
             {children}
         </Typography>

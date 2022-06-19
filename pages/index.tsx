@@ -36,11 +36,11 @@ let MyCarousel = ()=>{
     }
   }} >
     <Carousel>
-      <div style={{height:'550px',display:'flex',alignItems:'center'}}>
-        <Image src="/images/1.jpg"/>
+      <div style={{maxHeight:'550px'}}>
+        <img src="/images/banner.jpg"/>
       </div>
-      <div style={{height:'550px',display:'flex',alignItems:'center'}}>
-        <Image src="/images/2.jpg"/>
+      <div style={{maxHeight:'550px',display:'flex',alignItems:'center'}}>
+        <img src="/images/banner2.jpg"/>
       </div>
     </Carousel>
   </Box>
@@ -50,7 +50,7 @@ let MyCarousel = ()=>{
 
 let Entreprise = ()=>{
 
-  return <Box sx={{py:10}}>
+  return <Box sx={{pt:3,pb:10}}>
     <Container maxWidth="xl">
       <Grid container spacing={2} alignItems='center'>
         <Grid item xs={12} md={5}>
@@ -149,13 +149,13 @@ let Products = ()=>{
 let Reseaux = ()=>{
 
   let publicationsImage = [
-    <Image src="/images/1.jpg"/>,
-    <Image src="/images/1.jpg"/>,
-    <Image src="/images/1.jpg"/>,
-    <Image src="/images/1.jpg"/>,
-    <Image src="/images/1.jpg"/>,
-    <Image src="/images/1.jpg"/>,
-    <Image src="/images/1.jpg"/>,
+    <Image key={1} src="/images/1.jpg"/>,
+    <Image key={2} src="/images/1.jpg"/>,
+    <Image key={3} src="/images/1.jpg"/>,
+    <Image key={4} src="/images/1.jpg"/>,
+    <Image key={5} src="/images/1.jpg"/>,
+    <Image key={6} src="/images/1.jpg"/>,
+    <Image key={7} src="/images/1.jpg"/>,
   ]
 
   return <Box sx={{py:10}}>

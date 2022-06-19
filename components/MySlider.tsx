@@ -7,8 +7,6 @@ import {
 
 import { Box } from '@mui/material'
 
-import Image from '@components/MyImage'
-
 const MySlider = ({datas}) => {
 
     let parentRef = React.useRef<HTMLDivElement>(null)
@@ -57,7 +55,6 @@ const MySlider = ({datas}) => {
         let sliderWidth = sliderRef.current ? sliderRef.current.offsetWidth : parentWidth
         let childNumber = sliderRef.current ? sliderRef.current.childElementCount : 4
         let childWidth = sliderWidth / childNumber
-        let difference = sliderWidth > parentWidth ? sliderWidth - parentWidth : 0
         if(-slideState > 0){
             if((slideState + childWidth) * -1 > 0){
                 setSlide(slideState + childWidth)

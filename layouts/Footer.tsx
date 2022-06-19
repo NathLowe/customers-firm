@@ -27,7 +27,9 @@ const Footer = () => {
             <Grid container sx={{justifyContent:{xs:'center',sm:'space-evenly'},px:2}} spacing={3}>
                 <Grid item xs={10} md={3}>
                     <Box sx={{display:'flex',justifyContent:'center'}}>
-                        <img src="/images/logo.png" alt="Logo" width="90%" />
+                        <Link href="/">
+                            <img src="/images/logo.png" alt="Logo" width="90%" />
+                        </Link>
                     </Box>
                     <Typography textAlign="center" variant="body2" sx={{my:1,fontSize:'1.4rem'}}>Cameroun, Douala Logpom, BP 6560</Typography>
                 </Grid>
@@ -49,7 +51,7 @@ const Footer = () => {
                     </Stack>
                 </Grid>
                 <Grid item xs={10} md={3}>
-                    <Typography textAlign="center" variant="body2" sx={{fontSize:'h6.fontSize'}} >Connect With Us</Typography>
+                    <Typography variant="h5" textAlign="center" color="primary.light" >Connect With Us</Typography>
                     <Grid justifyContent="center" sx={{mt:'1px'}} container spacing={3}>
                         <Grid item xs={3} md={2} >
                             <IconButton sx={{color:'white'}}>
