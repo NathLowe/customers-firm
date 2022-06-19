@@ -13,14 +13,17 @@ body{
     font-size: 20px
 }
 
-html::-webkit-scrollbar {
-    display: none;
+@media (max-width:800px) {
+    html::-webkit-scrollbar {
+        display: none;
+    }
+    
+    html {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 }
 
-html {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
 
 h1,h2,h3,h4,h5,h6{
     font-family:'frassel'!important;

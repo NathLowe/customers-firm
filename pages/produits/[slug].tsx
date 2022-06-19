@@ -132,20 +132,22 @@ const Product = ({slug,parfum,dataContenant,dataContenance,title,description}:Pr
     },[router])
 
     let getImageSrc = React.useCallback(():string=>{
-        let image = allProductsImages[slug][0].image
+        let image = null
         for (let index = 0; index < allProductsImages[slug].length; index++) {
             let data = allProductsImages[slug][index];
-            if(data.contenant == variants.contenant && data.contenance == variants.contenance){
-                if(data.parfum){
-                    if(data.parfum == variants.parfum){
+            if(data.parfum){
+                if(data.parfum == variants.parfum){
+                    if(data.contenant == variants.contenant && data.contenance == variants.contenance){
                         image = data.image
                     }
-                }else{
+                }
+            }else{
+                if(data.contenant == variants.contenant && data.contenance == variants.contenance){
                     image = data.image
                 }
             }
         }
-        return image
+        return image ? image : allProductsImages[slug][0].image
     },[variants])
 
     let [productImage,setProductImage] = React.useState(getImageSrc())
