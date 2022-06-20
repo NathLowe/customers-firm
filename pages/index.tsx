@@ -79,11 +79,11 @@ let Entreprise = ()=>{
 let Products = ()=>{
 
   let datasProducts = [
-    {image:"/images/1.jpg",name:'Glycérine',link:'/products/glycerine'},
-    {image:"/images/2.jpg",name:'Alcool',link:'/products/alcool'},
-    {image:"/images/3.jpg",name:'Gel Hydroalcoolique',link:'/products/gel-hudroalcoolique'},
-    {image:"/images/1.jpg",name:'Lotion',link:'/products/lotion'},
-    {image:"/images/2.jpg",name:'Huile Éclaircissante',link:'/products/huile-eclaircissante'},
+    {image:"/images/1.jpg",name:'Glycérine',link:'/produits/glycerine'},
+    {image:"/images/2.jpg",name:'Alcool',link:'/produits/alcool'},
+    {image:"/images/3.jpg",name:'Gel Hydroalcoolique',link:'/produits/gel-hudroalcoolique'},
+    {image:"/images/1.jpg",name:'Lotion',link:'/produits/lotion'},
+    {image:"/images/2.jpg",name:'Huile Éclaircissante',link:'/produits/huile-eclaircissante'},
   ]
 
   let Product = ({image,name,link})=>{
